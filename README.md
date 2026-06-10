@@ -74,11 +74,33 @@ DATABASE_URL="postgresql://my_user:my_password@localhost:5432/my_database"
 
 ## Running the Application
 
-To run the application, execute the app.py script from the root directory of the project:
+To run the Streamlit application locally, execute the following command from the root directory of the project:
+
+```bash
+streamlit run src/app.py
+```
+
+If you want to run the app as a command-line script instead, use:
 
 ```bash
 python src/app.py
 ```
+
+## Deploying to Render
+
+This repository is configured for deployment on Render using `render.yaml`.
+
+1. Create a free account at https://render.com.
+2. Connect your GitHub account and select the `drtee-jtb/Streamlit` repository.
+3. Add a new Web Service and choose the `main` branch.
+4. Render will detect the `render.yaml` configuration:
+   - `buildCommand`: `pip install -r requirements.txt`
+   - `startCommand`: `streamlit run src/app.py --server.port $PORT --server.address 0.0.0.0`
+5. Deploy the service.
+
+Once the deployment is complete, Render will provide a public URL for your app. Add that URL here:
+
+Live app: https://<your-render-service>.onrender.com
 
 ## Adding Models
 
